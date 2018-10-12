@@ -1,0 +1,10 @@
+﻿  main.cpp
+c:\users\administrador\desktop\simple-pong-sigil\simplepongsigil\src\main.cpp(4): warning C4326: el tipo de valor devuelto de 'main' debe ser 'int' en lugar de 'void'
+  simplepongSIGIL.vcxproj -> C:\Users\Administrador\Desktop\Simple-Pong-SIGIL\simplepongSIGIL\Debug\simplepongSIGIL.exe
+  Ya existe el subdirectorio o el archivo C:\Users\Administrador\Desktop\Simple-Pong-SIGIL\simplepongSIGIL\Debug\dll.
+  C:\Users\Administrador\Desktop\Simple-Pong-SIGIL\simplepongSIGIL\dll\calibri.ttf
+  C:\Users\Administrador\Desktop\Simple-Pong-SIGIL\simplepongSIGIL\dll\glew32.dll
+  C:\Users\Administrador\Desktop\Simple-Pong-SIGIL\simplepongSIGIL\dll\OpenAL32.dll
+  C:\Users\Administrador\Desktop\Simple-Pong-SIGIL\simplepongSIGIL\dll\sigil.dll
+  C:\Users\Administrador\Desktop\Simple-Pong-SIGIL\simplepongSIGIL\dll\wrap_oal.dll
+  5 archivo(s) copiado(s)
