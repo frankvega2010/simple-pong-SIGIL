@@ -75,15 +75,15 @@ namespace Juego
 		void playerDraw()
 		{
 			// Draw middle line
-			DrawRectangle(middleLine.position.x, middleLine.position.y, middleLine.size.x, middleLine.size.y, WHITE);
+			slRectangleFill(middleLine.position.x, middleLine.position.y, middleLine.size.x, middleLine.size.y);
 
-			DrawRectangle(players[0].position.x, players[0].position.y, players[0].size.x, players[0].size.y, RED);
+			slRectangleFill(players[0].position.x, players[0].position.y, players[0].size.x, players[0].size.y); // red
 
-			DrawRectangle(players[1].position.x, players[1].position.y, players[1].size.x, players[1].size.y, SKYBLUE);
+			slRectangleFill(players[1].position.x, players[1].position.y, players[1].size.x, players[1].size.y); // skyblue
 
 			if (isPlayer2CPU)
 			{
-				DrawRectangle(players[1].position.x, players[1].position.y, players[1].size.x, players[1].size.y, YELLOW);
+				slRectangleFill(players[1].position.x, players[1].position.y, players[1].size.x, players[1].size.y); //yellow
 			}
 		}
 

@@ -64,7 +64,8 @@ namespace Juego
 		//InitAudioDevice();
 
 		//pong_hit_wall = LoadSound("res/wall.wav");
-		pong_hit_wall = slLoadWAV("res/wall.wav");
+		pong_hit_wall = slLoadWAV("res/wall.wav");
+
 		pong_hit_player = slLoadWAV("res/player.wav");
 		pong_player_scored = slLoadWAV("res/score.wav");
 		pong_match_end = slLoadWAV("res/pong_frank_match_end.wav");
@@ -96,7 +97,8 @@ namespace Juego
 	static void Draw()
 	{
 		//BeginDrawing();
-		slSetBackColor(0, 0, 0);
+		slSetBackColor(0, 0, 0);
+
 		switch (gamePhase)
 		{
 		case Menu: Menu_Section::DrawMenu(); break;

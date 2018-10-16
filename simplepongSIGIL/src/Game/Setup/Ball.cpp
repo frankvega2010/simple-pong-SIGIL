@@ -1,5 +1,7 @@
 #include "Setup\Ball.h"
 
+#include "sl.h"
+
 #include "Setup\Game.h"
 #include "Setup\Player.h"
 
@@ -43,7 +45,8 @@ namespace Juego
 		}
 		void ballDraw()
 		{
-			DrawCircleV(ball.position, ball.radio, WHITE);
+			slCircleFill(ball.position.x, ball.position.y, ball.radio, 60);
+			//DrawCircleV(ball.position, ball.radio, WHITE);
 		}
 
 		void ballResetSpeed()

@@ -1,6 +1,7 @@
 #include "menu.h"
 
-#include "raylib.h"
+#include "sl.h"
+//#include "raylib.h"
 #include "Setup/Game.h"
 #include "Setup\Player.h"
 
@@ -22,7 +23,7 @@ namespace Juego
 		static void MenuInput()
 		{
 
-			if (IsKeyPressed(KEY_ONE))
+			if (slGetKey(49)) //one
 			{
 				#ifdef AUDIO
 								PlaySound(pong_select_menu);
@@ -32,7 +33,7 @@ namespace Juego
 				isScreenFinished = true;
 			}
 
-			if (IsKeyPressed(KEY_TWO))
+			if (slGetKey(50))
 			{
 				#ifdef AUDIO
 								PlaySound(pong_select_menu);
@@ -42,7 +43,7 @@ namespace Juego
 				isScreenFinished = true;
 			}
 
-			if (IsKeyPressed(KEY_THREE))
+			if (slGetKey(51))
 			{
 				#ifdef AUDIO
 								PlaySound(pong_select_menu);
@@ -51,7 +52,7 @@ namespace Juego
 				isScreenFinished = true;
 			}
 
-			if (IsKeyPressed(KEY_FOUR))
+			if (slGetKey(52))
 			{
 				#ifdef AUDIO
 								PlaySound(pong_select_menu);
@@ -60,7 +61,7 @@ namespace Juego
 				isScreenFinished = true;
 			}
 
-			if (IsKeyPressed(KEY_FIVE))
+			if (slGetKey(53))
 			{
 				#ifdef AUDIO
 				PlaySound(pong_select_menu);
@@ -69,7 +70,7 @@ namespace Juego
 				isScreenFinished = true;
 			}
 
-			if (IsKeyPressed(KEY_SIX))
+			if (slGetKey(54))
 			{
 				selectOption = QuitGame;
 				isScreenFinished = true;
@@ -97,14 +98,23 @@ namespace Juego
 
 		void DrawMenu()
 		{
-			DrawText(FormatText("Simple Pong!"), MeasureText("Simple Pong!", 60) / 6, 20, defaultFontSize, WHITE);
-			DrawText(FormatText("1. Player vs CPU"), 10, screenHeight / 6.3, defaultFontSize, WHITE);
-			DrawText(FormatText("2. 2 Players Local"), 10, screenHeight / 4.2, defaultFontSize, WHITE);
-			DrawText(FormatText("3. Options"), 10, screenHeight / 3.2, defaultFontSize, WHITE);
-			DrawText(FormatText("4. How to play"), 10, screenHeight / 2.6, defaultFontSize, WHITE);
-			DrawText(FormatText("5. Credits"), 10, screenHeight / 2.2, defaultFontSize, WHITE);
-			DrawText(FormatText("6. Quit"), 10, screenHeight / 1.9, defaultFontSize, WHITE);
-			DrawText(FormatText("Ver. 1.0 by Franco Vega"), screenWidth / 2.8, screenHeight / 1.1, defaultFontSize, WHITE);
+			slSetFontSize(defaultFontSize);
+			slText(30, 20, "Simple Pong!");
+			slText(10, screenHeight / 6.3, "1. Player vs CPU");
+			slText(10, screenHeight / 4.2, "2. 2 Players Local");
+			slText(10, screenHeight / 3.2, "3. Options");
+			slText(10, screenHeight / 2.6, "4. How to play");
+			slText(10, screenHeight / 2.2, "5. Credits");
+			slText(10, screenHeight / 1.9, "6. Quit");
+			slText(screenWidth / 2.8, screenHeight / 1.1, "Ver. 1.0 by Franco Vega");
+			//DrawText(FormatText("Simple Pong!"), MeasureText("Simple Pong!", 60) / 6, 20, defaultFontSize, WHITE);
+			//DrawText(FormatText("1. Player vs CPU"), 10, screenHeight / 6.3, defaultFontSize, WHITE);
+			//DrawText(FormatText("2. 2 Players Local"), 10, screenHeight / 4.2, defaultFontSize, WHITE);
+			//DrawText(FormatText("3. Options"), 10, screenHeight / 3.2, defaultFontSize, WHITE);
+			//DrawText(FormatText("4. How to play"), 10, screenHeight / 2.6, defaultFontSize, WHITE);
+			//DrawText(FormatText("5. Credits"), 10, screenHeight / 2.2, defaultFontSize, WHITE);
+			//DrawText(FormatText("6. Quit"), 10, screenHeight / 1.9, defaultFontSize, WHITE);
+			//DrawText(FormatText("Ver. 1.0 by Franco Vega"), screenWidth / 2.8, screenHeight / 1.1, defaultFontSize, WHITE);
 		}
 	}
 }
