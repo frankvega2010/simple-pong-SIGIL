@@ -1,13 +1,15 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "raylib.h"
+//#include "raylib.h"
 
 namespace Juego
 {
 	struct Player {
-		Vector2 position;
-		Vector2 size;
+		int posX;
+		int posY;
+		int sizeX;
+		int sizeY;
 		int score;
 		int scorePositionX;
 		bool scored;

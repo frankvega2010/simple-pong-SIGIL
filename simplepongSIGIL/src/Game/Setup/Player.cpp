@@ -21,9 +21,10 @@ namespace Juego
 		{
 			for (int i = 0; i < maxplayers; i++)
 			{
-				players[i].position.x = 0; // default value
-				players[i].position.y = screenHeight / 2; // default value = screenHeight / 2 - 40
-				players[i].size = { 20, 120 }; // mitad = 60
+				players[i].posX = 0; // default value
+				players[i].posY = screenHeight / 2; // default value = screenHeight / 2 - 40
+				players[i].sizeX = 20; // mitad = 60
+				players[i].sizeY = 120; // mitad = 60
 				players[i].score = 0;
 				players[i].scorePositionX = screenWidth / 2 - 250;
 				players[i].scored = false;
@@ -31,30 +32,31 @@ namespace Juego
 			}
 
 			// Setting player 1 X Position
-			players[0].position.x = screenWidth / 34; // default value = screenWidth / 2 - 550 - 20
+			players[0].posX = screenWidth / 34; // default value = screenWidth / 2 - 550 - 20
 			players[0].scorePositionX = screenWidth / 2 - 250;
 
 			 // Setting player 2 X Position
-			players[1].position.x = screenWidth / 2 * 1.9; // default value = screenWidth / 2 + 550
+			players[1].posX = screenWidth / 2 * 1.9; // default value = screenWidth / 2 + 550
 			players[1].scorePositionX = screenWidth / 2 + 250;
 		}
 
 		void createMiddleLine()
 		{
-			middleLine.position.x = screenWidth / 2;
-			middleLine.position.y = 0;
-			middleLine.size = { 5, (float)screenHeight };
+			middleLine.posX = screenWidth / 2;
+			middleLine.posY = 0;
+			middleLine.sizeX = 5;
+			middleLine.sizeY = (float)screenHeight;
 		}
 		
 		void playerInput()
 		{
-			if (slGetKey(119)) players[0].position.y -= players[0].defaultSpeed * slGetDeltaTime(); // w
-			if (slGetKey(115)) players[0].position.y += players[0].defaultSpeed * slGetDeltaTime(); // s
+			if (slGetKey(119)) players[0].posY -= players[0].defaultSpeed * slGetDeltaTime(); // w
+			if (slGetKey(115)) players[0].posY += players[0].defaultSpeed * slGetDeltaTime(); // s
 
 			if (!(isPlayer2CPU))
 			{
-				if (slGetKey(SL_KEY_UP)) players[1].position.y -= players[1].defaultSpeed * slGetDeltaTime();
-				if (slGetKey(SL_KEY_DOWN)) players[1].position.y += players[1].defaultSpeed * slGetDeltaTime();
+				if (slGetKey(SL_KEY_UP)) players[1].posY -= players[1].defaultSpeed * slGetDeltaTime();
+				if (slGetKey(SL_KEY_DOWN)) players[1].posY += players[1].defaultSpeed * slGetDeltaTime();
 			}			
 		}
 
@@ -62,28 +64,28 @@ namespace Juego
 		{
 			if (isPlayer2CPU)
 			{
-				players[1].position.y = (ball.position.y / cpuDifficulty);
+				players[1].posY = (ball.posY / cpuDifficulty);
 			}
 
 			for (int i = 0; i < maxplayers; i++)
 			{
-				if (players[i].position.y < 0) players[i].position.y = 0;
-				if (players[i].position.y + players[i].size.y > screenHeight) players[i].position.y = screenHeight - players[i].size.y;
+				if (players[i].posY < 0) players[i].posY = 0;
+				if (players[i].posY + players[i].sizeY > screenHeight) players[i].posY = screenHeight - players[i].sizeY;
 			}
 		}
 
 		void playerDraw()
 		{
 			// Draw middle line
-			slRectangleFill(middleLine.position.x, middleLine.position.y, middleLine.size.x, middleLine.size.y);
+			slRectangleFill(middleLine.posX, middleLine.posY, middleLine.sizeX, middleLine.sizeY);
 
-			slRectangleFill(players[0].position.x, players[0].position.y, players[0].size.x, players[0].size.y); // red
+			slRectangleFill(players[0].posX, players[0].posY, players[0].sizeX, players[0].sizeY); // red
 
-			slRectangleFill(players[1].position.x, players[1].position.y, players[1].size.x, players[1].size.y); // skyblue
+			slRectangleFill(players[1].posX, players[1].posY, players[1].sizeX, players[1].sizeY); // skyblue
 
 			if (isPlayer2CPU)
 			{
-				slRectangleFill(players[1].position.x, players[1].position.y, players[1].size.x, players[1].size.y); //yellow
+				slRectangleFill(players[1].posX, players[1].posY, players[1].sizeX, players[1].sizeY); //yellow
 			}
 		}
 

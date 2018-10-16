@@ -1,5 +1,6 @@
 #include "gameplay.h"
 
+#include "sl.h"
 #include "Setup\Game.h"
 #include "Setup\Player.h"
 #include "Setup\Ball.h"
@@ -18,7 +19,7 @@ namespace Juego
 			// Ball launching logic
 			if (!ball.active)
 			{
-				if (IsKeyPressed(KEY_SPACE))
+				if (slGetKey(32))
 				{
 						ball.active = true;
 				}
@@ -65,7 +66,7 @@ namespace Juego
 
 
 			// Collision logic: ball vs vertical walls FOR BOTH PLAYERS
-			if ((ball.position.x + ball.radio) >= screenWidth && ball.active)
+			if ((ball.posY + ball.radio) >= screenWidth && ball.active)
 			{
 			#ifdef AUDIO
 				PlaySound(pong_player_scored);
@@ -77,7 +78,7 @@ namespace Juego
 
 				ballResetSpeed();
 			}
-			else if ((ball.position.x + ball.radio) <= 0 && ball.active)
+			else if ((ball.posX + ball.radio) <= 0 && ball.active)
 			{
 			#ifdef AUDIO
 				PlaySound(pong_player_scored);
@@ -91,27 +92,27 @@ namespace Juego
 			}
 
 			// Collision logic: ball vs horizontal walls
-			if ((ball.position.y - ball.radio) <= 0)
+			if ((ball.posY - ball.radio) <= 0)
 			{
 				#ifdef AUDIO
 								PlaySound(pong_hit_wall);
 				#endif
 
-				ball.position.y = 0 + ball.radio;
-				ball.speed.y *= ball.defaultMultiplierHorizontalVertical;
+				ball.posY = 0 + ball.radio;
+				ball.speedY *= ball.defaultMultiplierHorizontalVertical;
 			}
-			if ((ball.position.y + ball.radio) >= screenHeight)
+			if ((ball.posY + ball.radio) >= screenHeight)
 			{
 				#ifdef AUDIO
 								PlaySound(pong_hit_wall);
 				#endif
-				ball.position.y = screenHeight - ball.radio;
-				ball.speed.y *= ball.defaultMultiplierHorizontalVertical;
+				ball.posY = screenHeight - ball.radio;
+				ball.speedY *= ball.defaultMultiplierHorizontalVertical;
 			}
 
 			// PLAYER VS BALL COLLISION ----------------------------------------------------------------------------------------------
 			//////////////////////////////////////////////////////--------------------------------------------------------------------
-			for (int i = 0; i < maxplayers; i++)
+			/*for (int i = 0; i < maxplayers; i++)
 			{
 				if (CheckCollisionCircleRec(ball.position, ball.radio, { players[i].position.x, players[i].position.y, players[i].size.x, players[i].size.y }))
 				{
@@ -146,7 +147,7 @@ namespace Juego
 					}
 				}
 
-			}
+			}*/
 		}
 
 		void InitGameplayScreen()
@@ -169,9 +170,10 @@ namespace Juego
 				players[i].score = 0;
 			}
 
-			ball.position = { (float)screenWidth / 2, (float)screenHeight / 2 };
-			players[0].position.y = screenHeight / 2;
-			players[1].position.y = screenHeight / 2;
+			ball.posX = (float)screenWidth / 2;
+			ball.posY = (float)screenHeight / 2;
+			players[0].posY = screenHeight / 2;
+			players[1].posY = screenHeight / 2;
 		}
 
 		void DrawGameplay()
@@ -183,15 +185,20 @@ namespace Juego
 			{
 				if (gameON)
 				{
-					DrawText("Press", screenWidth / 2 - 280, screenHeight / 4, defaultFontSizeGameplayText, RED); // default 380 300
-					DrawText("'SPACEBAR' to begin!", screenWidth / 2 + 20, screenHeight / 4, defaultFontSizeGameplayText, RED);
+					slSetFontSize(defaultFontSizeGameplayText);
+					slText(screenWidth / 2 - 280, screenHeight / 4, "Press");
+					slText(screenWidth / 2 + 20, screenHeight / 4, "'SPACEBAR' to begin!");
+					//DrawText("Press", screenWidth / 2 - 280, screenHeight / 4, defaultFontSizeGameplayText, RED); // default 380 300
+					//DrawText("'SPACEBAR' to begin!", screenWidth / 2 + 20, screenHeight / 4, defaultFontSizeGameplayText, RED);
 				}
 			}
 
 			//Draw Score
 			for (int i = 0; i < maxplayers; i++)
 			{
-				DrawText(FormatText("%i", players[i].score), players[i].scorePositionX, screenHeight / 80, defaultFontSizeGameplayScore, WHITE);			
+				slSetFontSize(defaultFontSizeGameplayScore);
+				slText(players[i].scorePositionX, screenHeight / 80, "0");
+				//DrawText(FormatText("%i", players[i].score), players[i].scorePositionX, screenHeight / 80, defaultFontSizeGameplayScore, WHITE);			
 			}
 		}
 	}

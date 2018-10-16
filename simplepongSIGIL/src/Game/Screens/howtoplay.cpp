@@ -1,6 +1,6 @@
 #include "howtoplay.h"
 
-#include "raylib.h"
+#include "sl.h"
 #include "Setup/Game.h"
 #include "Screens\gameplay.h"
 
@@ -13,7 +13,7 @@ namespace Juego
 		static void HowtoplayInput()
 		{
 
-			if (IsKeyPressed(KEY_ONE))
+			if (slGetKey(49))
 			{
 				#ifdef AUDIO
 				PlaySound(pong_select_menu);
@@ -44,15 +44,25 @@ namespace Juego
 
 		void DrawHowtoplay()
 		{
-			DrawText(FormatText("How to Play"), screenWidth / 3, 20, defaultFontSize, WHITE);
-			DrawText(FormatText("Player 1:"), screenWidth / 8, screenHeight / 6, defaultFontSize, WHITE);
-			DrawText(FormatText("W - Go Up"), screenWidth / 8, screenHeight / 4.0f, defaultFontSize, WHITE);
-			DrawText(FormatText("S - Go Down"), screenWidth / 8, screenHeight / 3.0f, defaultFontSize, WHITE);
-			DrawText(FormatText("Player 2:"), screenWidth / 8, screenHeight / 2.0f, defaultFontSize, WHITE);
-			DrawText(FormatText("KEY_UP - Go Up"), screenWidth / 8, screenHeight / 1.7f, defaultFontSize, WHITE);
-			DrawText(FormatText("KEY_DOWN - Go Down"), screenWidth / 8, screenHeight / 1.5f, defaultFontSize, WHITE);
-			DrawText(FormatText("Score Limit = %i", scoreLimit), screenWidth / 1.7, screenHeight / 2.5, defaultFontSize, WHITE);
-			DrawText(FormatText("1. Go back to Menu"), 10, screenHeight - 80, defaultFontSize, WHITE);
+			slSetFontSize(defaultFontSize);
+			slText(screenWidth / 3, 20, "How to Play");
+			slText(screenWidth / 8, screenHeight / 6, "Player 1:");
+			slText(screenWidth / 8, screenHeight / 4.0f, "W - Go Up");
+			slText(screenWidth / 8, screenHeight / 3.0f, "S - Go Down");
+			slText(screenWidth / 8, screenHeight / 2.0f, "Player 2:");
+			slText(screenWidth / 8, screenHeight / 1.7f, "KEY_UP - Go Up");
+			slText(screenWidth / 8, screenHeight / 1.5f, "KEY_DOWN - Go Down");
+			slText(screenWidth / 1.7, screenHeight / 2.5, "Score Limit = 5");
+			slText(10, screenHeight - 80, "1. Go back to Menu");
+			//DrawText(FormatText("How to Play"), screenWidth / 3, 20, defaultFontSize, WHITE);
+			//DrawText(FormatText("Player 1:"), screenWidth / 8, screenHeight / 6, defaultFontSize, WHITE);
+			//DrawText(FormatText("W - Go Up"), screenWidth / 8, screenHeight / 4.0f, defaultFontSize, WHITE);
+			//DrawText(FormatText("S - Go Down"), screenWidth / 8, screenHeight / 3.0f, defaultFontSize, WHITE);
+			//DrawText(FormatText("Player 2:"), screenWidth / 8, screenHeight / 2.0f, defaultFontSize, WHITE);
+			//DrawText(FormatText("KEY_UP - Go Up"), screenWidth / 8, screenHeight / 1.7f, defaultFontSize, WHITE);
+			//DrawText(FormatText("KEY_DOWN - Go Down"), screenWidth / 8, screenHeight / 1.5f, defaultFontSize, WHITE);
+			//DrawText(FormatText("Score Limit = %i", scoreLimit), screenWidth / 1.7, screenHeight / 2.5, defaultFontSize, WHITE);
+			//DrawText(FormatText("1. Go back to Menu"), 10, screenHeight - 80, defaultFontSize, WHITE);
 		}
 	}
 }

@@ -13,10 +13,75 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de origen\Game">
+      <UniqueIdentifier>{9ba18c53-d7fb-440d-a14b-d888b854b0bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Game\Screens">
+      <UniqueIdentifier>{85d6994d-6b09-454f-8136-fa0f36d809bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Game\Setup">
+      <UniqueIdentifier>{4f8ad26f-8298-46a1-b194-75daac775291}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Game\Setup\Ball.cpp">
+      <Filter>Archivos de origen\Game\Setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Setup\Game.cpp">
+      <Filter>Archivos de origen\Game\Setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Setup\Player.cpp">
+      <Filter>Archivos de origen\Game\Setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Screens\credits.cpp">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Screens\gameover.cpp">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Screens\gameplay.cpp">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Screens\howtoplay.cpp">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Screens\menu.cpp">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game\Screens\settings.cpp">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\Game\Setup\Ball.h">
+      <Filter>Archivos de origen\Game\Setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Setup\Game.h">
+      <Filter>Archivos de origen\Game\Setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Setup\Player.h">
+      <Filter>Archivos de origen\Game\Setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Screens\credits.h">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Screens\gameover.h">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Screens\gameplay.h">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Screens\howtoplay.h">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Screens\menu.h">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game\Screens\settings.h">
+      <Filter>Archivos de origen\Game\Screens</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

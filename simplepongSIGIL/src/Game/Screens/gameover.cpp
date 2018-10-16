@@ -1,5 +1,6 @@
 #include "gameover.h"
 
+#include "sl.h"
 #include "Setup/Game.h"
 #include "Screens/gameplay.h"
 #include "Setup\Player.h"
@@ -13,7 +14,7 @@ namespace Juego
 	{
 		static void GameOverInput()
 		{
-			if (IsKeyPressed(KEY_ONE))
+			if (slGetKey(49))
 			{
 				#ifdef AUDIO
 				PlaySound(pong_select_menu);
@@ -22,7 +23,7 @@ namespace Juego
 				isScreenFinished = true;
 			}
 
-			if (IsKeyPressed(KEY_TWO))
+			if (slGetKey(50))
 			{
 				#ifdef AUDIO
 				PlaySound(pong_select_menu);
@@ -49,7 +50,9 @@ namespace Juego
 
 		void DrawGameOver()
 		{
-			DrawText(FormatText("Match Finished!"), screenWidth / 4, screenHeight / 16, defaultFontSize, WHITE);
+			slSetFontSize(defaultFontSize);
+			slText(screenWidth / 4, screenHeight / 16, "Match Finished!");
+			//DrawText(FormatText("Match Finished!"), screenWidth / 4, screenHeight / 16, defaultFontSize, WHITE);
 
 			for (int i = 0; i < maxplayers; i++)
 			{
@@ -57,17 +60,21 @@ namespace Juego
 				{
 					if (players[1].score >= scoreLimit && isPlayer2CPU)
 					{
-						DrawText(FormatText("Player CPU won!"), screenWidth / 4, screenHeight / 3, defaultFontSize, WHITE);
+						//DrawText(FormatText("Player CPU won!"), screenWidth / 4, screenHeight / 3, defaultFontSize, WHITE);
+						slText(screenWidth / 4, screenHeight / 3, "Player CPU won!");
 					}
 					else
 					{
-						DrawText(FormatText("Player %i won!", i + 1), screenWidth / 4, screenHeight / 3, defaultFontSize, WHITE);
+						//DrawText(FormatText("Player %i won!", i + 1), screenWidth / 4, screenHeight / 3, defaultFontSize, WHITE);
+						slText(screenWidth / 4, screenHeight / 3, "Player won!");
 					}
 				}
 			}
 
-			DrawText(FormatText("1. Go back to Menu"), screenWidth / 4 - 20, screenHeight / 2, defaultFontSize, WHITE); // default values  screenWidth / 2 - 250, 300
-			DrawText(FormatText("2. Restart Match"), screenWidth / 4 - 20, screenHeight / 1.5, defaultFontSize, WHITE); // default values screenWidth / 2 - 250, 400
+			slText(screenWidth / 4 - 20, screenHeight / 2, "1. Go back to Menu");
+			slText(screenWidth / 4 - 20, screenHeight / 1.5, "2. Restart Match");
+			//DrawText(FormatText("1. Go back to Menu"), screenWidth / 4 - 20, screenHeight / 2, defaultFontSize, WHITE); // default values  screenWidth / 2 - 250, 300
+			//DrawText(FormatText("2. Restart Match"), screenWidth / 4 - 20, screenHeight / 1.5, defaultFontSize, WHITE); // default values screenWidth / 2 - 250, 400
 		}
 	}
 }

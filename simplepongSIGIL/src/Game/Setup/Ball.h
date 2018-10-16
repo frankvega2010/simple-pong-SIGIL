@@ -1,13 +1,15 @@
 #ifndef BALL_H
 #define BALL_H
 
-#include "raylib.h"
+//#include "raylib.h"
 
 namespace Juego
 {
 	struct Ball {
-		Vector2 position;
-		Vector2 speed;
+		int posX;
+		int posY;
+		int speedX;
+		int speedY;
 		int radio;
 		bool active;
 		float defaultMultiplier;

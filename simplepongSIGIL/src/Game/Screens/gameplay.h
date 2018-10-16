@@ -1,7 +1,7 @@
 #ifndef GAMEPLAY_H
 #define GAMEPLAY_H
 
-#include "raylib.h"
+//#include "raylib.h"
 
 namespace Juego
 {
