@@ -13,8 +13,8 @@ namespace Juego
 	{
 		void createBall()
 		{
-			ball.posX = (float)screenWidth / 2;
-			ball.posY = (float)screenHeight / 2;
+			ball.center.x = (float)screenWidth / 2;
+			ball.center.y = (float)screenHeight / 2;
 			ball.radio = 10;
 			ball.speedX = 500.0f;
 			ball.speedY = 0;
@@ -30,26 +30,26 @@ namespace Juego
 			// Ball movement logic
 			if (ball.active)
 			{
-				ball.posX += ball.speedX * slGetDeltaTime();
-				ball.posY += ball.speedY * slGetDeltaTime();
+				ball.center.x += ball.speedX * slGetDeltaTime();
+				ball.center.y += ball.speedY * slGetDeltaTime();
 			}
 			else
 			{
 				if (players[0].scored)
 				{
-					ball.posX = (float)screenWidth / 2 + 20;
-					ball.posY = (float)screenHeight / 2;
+					ball.center.x = (float)screenWidth / 2 + 20;
+					ball.center.y = (float)screenHeight / 2;
 				}
 				else if (players[1].scored)
 				{
-					ball.posX = (float)screenWidth / 2 - 20;
-					ball.posY = (float)screenHeight / 2;
+					ball.center.x = (float)screenWidth / 2 - 20;
+					ball.center.y = (float)screenHeight / 2;
 				}
 			}
 		}
 		void ballDraw()
 		{
-			slCircleFill(ball.posX, ball.posY, ball.radio, 60);
+			slCircleFill(ball.center.x, ball.center.y, ball.radio, 60);
 			//DrawCircleV(ball.position, ball.radio, WHITE);
 		}
 

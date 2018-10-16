@@ -1,5 +1,6 @@
 #include "gameplay.h"
 
+#include <cmath>
 #include "sl.h"
 #include "Setup\Game.h"
 #include "Setup\Player.h"
@@ -14,6 +15,26 @@ namespace Juego
 
 	namespace Gameplay_Section
 	{
+		static bool CheckCollisionCircleRec(Center center, float radius, Rectangle rec)
+		{
+			int recCenterX = (int)(rec.x + rec.width / 2.0f);
+			int recCenterY = (int)(rec.y + rec.height / 2.0f);
+
+			float dx = (float)fabs(center.x - recCenterX);
+			float dy = (float)fabs(center.y - recCenterY);
+
+			if (dx > (rec.width / 2.0f + radius)) { return false; }
+			if (dy > (rec.height / 2.0f + radius)) { return false; }
+
+			if (dx <= (rec.width / 2.0f)) { return true; }
+			if (dy <= (rec.height / 2.0f)) { return true; }
+
+			float cornerDistanceSq = (dx - rec.width / 2.0f)*(dx - rec.width / 2.0f) +
+				(dy - rec.height / 2.0f)*(dy - rec.height / 2.0f);
+
+			return (cornerDistanceSq <= (radius*radius));
+		}
+
 		static void GameplayInput()
 		{
 			// Ball launching logic
@@ -66,7 +87,7 @@ namespace Juego
 
 
 			// Collision logic: ball vs vertical walls FOR BOTH PLAYERS
-			if ((ball.posY + ball.radio) >= screenWidth && ball.active)
+			if ((ball.center.x + ball.radio) >= screenWidth && ball.active)
 			{
 			#ifdef AUDIO
 				PlaySound(pong_player_scored);
@@ -78,7 +99,7 @@ namespace Juego
 
 				ballResetSpeed();
 			}
-			else if ((ball.posX + ball.radio) <= 0 && ball.active)
+			else if ((ball.center.x + ball.radio) <= 0 && ball.active)
 			{
 			#ifdef AUDIO
 				PlaySound(pong_player_scored);
@@ -92,62 +113,62 @@ namespace Juego
 			}
 
 			// Collision logic: ball vs horizontal walls
-			if ((ball.posY - ball.radio) <= 0)
+			if ((ball.center.y - ball.radio) <= 0)
 			{
 				#ifdef AUDIO
 								PlaySound(pong_hit_wall);
 				#endif
 
-				ball.posY = 0 + ball.radio;
+				ball.center.y = 0 + ball.radio;
 				ball.speedY *= ball.defaultMultiplierHorizontalVertical;
 			}
-			if ((ball.posY + ball.radio) >= screenHeight)
+			if ((ball.center.y + ball.radio) >= screenHeight)
 			{
 				#ifdef AUDIO
 								PlaySound(pong_hit_wall);
 				#endif
-				ball.posY = screenHeight - ball.radio;
+				ball.center.y = screenHeight - ball.radio;
 				ball.speedY *= ball.defaultMultiplierHorizontalVertical;
 			}
 
 			// PLAYER VS BALL COLLISION ----------------------------------------------------------------------------------------------
 			//////////////////////////////////////////////////////--------------------------------------------------------------------
-			/*for (int i = 0; i < maxplayers; i++)
+			for (int i = 0; i < maxplayers; i++)
 			{
-				if (CheckCollisionCircleRec(ball.position, ball.radio, { players[i].position.x, players[i].position.y, players[i].size.x, players[i].size.y }))
+				if (CheckCollisionCircleRec(ball.center, ball.radio, players[i].rectangle))
 				{
-					if (ball.speed.x < 0 || ball.speed.x > 0)
+					if (ball.speedX < 0 || ball.speedX > 0)
 					{
 						#ifdef AUDIO
 						PlaySound(pong_hit_player);
 						#endif
-						if (ball.position.x - ball.radio < players[0].position.x + players[0].size.x)
+						if (ball.center.x - ball.radio < players[0].rectangle.x + players[0].rectangle.width)
 						{
-							ball.position.x = players[0].position.x + players[0].size.x + ball.radio;
+							ball.center.x = players[0].rectangle.x + players[0].rectangle.width + ball.radio;
 						}
-						if (ball.position.x + ball.radio > players[1].position.x)
+						if (ball.center.x + ball.radio > players[1].rectangle.x)
 						{
-							ball.position.x = players[1].position.x - ball.radio;
+							ball.center.x = players[1].rectangle.x - ball.radio;
 						}
 
-						if (ball.speed.x >= ballMaxSpeed)
+						if (ball.speedX >= ballMaxSpeed)
 						{
-							ball.speed.x = ballMaxSpeed * (-1);
+							ball.speedX = ballMaxSpeed * (-1);
 						}
-						else if (ball.speed.x <= -(ballMaxSpeed))
+						else if (ball.speedX <= -(ballMaxSpeed))
 						{
-							ball.speed.x = -(ballMaxSpeed) * (-1);
+							ball.speedX = -(ballMaxSpeed) * (-1);
 						}
 						else
 						{
-							ball.speed.x *= -1.1;
+							ball.speedX *= -1.1;
 						}				
-						ball.speed.y = ((players[i].position.y + players[i].size.y / 2) - ball.position.y) / (players[i].size.y / 2) * (maxAngle);
+						ball.speedY = ((players[i].rectangle.y + players[i].rectangle.height / 2) - ball.center.y) / (players[i].rectangle.height / 2) * (maxAngle);
 						
 					}
 				}
 
-			}*/
+			}
 		}
 
 		void InitGameplayScreen()
@@ -170,10 +191,10 @@ namespace Juego
 				players[i].score = 0;
 			}
 
-			ball.posX = (float)screenWidth / 2;
-			ball.posY = (float)screenHeight / 2;
-			players[0].posY = screenHeight / 2;
-			players[1].posY = screenHeight / 2;
+			ball.center.x = (float)screenWidth / 2;
+			ball.center.y = (float)screenHeight / 2;
+			players[0].rectangle.y = screenHeight / 2;
+			players[1].rectangle.y = screenHeight / 2;
 		}
 
 		void DrawGameplay()

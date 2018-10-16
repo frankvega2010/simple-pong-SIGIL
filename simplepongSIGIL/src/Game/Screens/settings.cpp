@@ -167,23 +167,13 @@ namespace Juego
 		void DrawSettings()
 		{
 			slSetFontSize(defaultFontSize);
-			slText(30, 20, "Resolution");
+			//slText(30, 440, "Resolution");
 
-			slText(screenWidth / 1.8, 20, "CPU Difficulty");
-			slText(screenWidth / 1.5, 120, "6. Easy");
-			slText(screenWidth / 1.5, 200, "7. Normal");
-			slText(screenWidth / 1.5, 280, "8. Hard");
-			slText(10, 440, "9. Go back to Menu");
-			//DrawText(FormatText("Resolution"), MeasureText("Bienvenido al pong", 60) / 6, 20, defaultFontSize, WHITE);
-			//DrawText(FormatText("1. 640x480"), 10, 120, defaultFontSize, WHITE);
-			//DrawText(FormatText("2. 720x576"), 10, 200, defaultFontSize, WHITE);
-			//DrawText(FormatText("3. 1600x900"), 10, 280, defaultFontSize, WHITE);
-			//DrawText(FormatText("4. 1300x800"), 10, 360, defaultFontSize, WHITE);
-			//DrawText(FormatText("CPU Difficulty"), screenWidth / 1.8, 20, defaultFontSize, WHITE);
-			//DrawText(FormatText("6. Easy"), screenWidth / 1.5, 120, defaultFontSize, WHITE);
-			//DrawText(FormatText("7. Normal"), screenWidth / 1.5, 200, defaultFontSize, WHITE);
-			//DrawText(FormatText("8. Hard"), screenWidth / 1.5, 280, defaultFontSize, WHITE);
-			//DrawText(FormatText("9. Go back to Menu"), 10, 440, defaultFontSize, WHITE);
+			slText(30, 440, "CPU Difficulty");
+			slText(30, 380, "6. Easy");
+			slText(30, 300, "7. Normal");
+			slText(30, 220, "8. Hard");
+			slText(10, 20, "9. Go back to Menu");
 		}
 	}
 }

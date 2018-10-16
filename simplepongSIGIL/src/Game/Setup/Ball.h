@@ -5,9 +5,14 @@
 
 namespace Juego
 {
+	struct Center
+	{
+		int x;
+		int y;
+	};
+
 	struct Ball {
-		int posX;
-		int posY;
+		Center center;
 		int speedX;
 		int speedY;
 		int radio;

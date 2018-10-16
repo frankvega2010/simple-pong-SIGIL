@@ -100,14 +100,14 @@ namespace Juego
 		{
 			slSetFont(slLoadFont("res/fonts/calibri.ttf"), 24);
 			slSetFontSize(defaultFontSize);
-			slText(30, 20, "Simple Pong!");
-			slText(10, screenHeight / 6.3, "1. Player vs CPU");
-			slText(10, screenHeight / 4.2, "2. 2 Players Local");
-			slText(10, screenHeight / 3.2, "3. Options");
-			slText(10, screenHeight / 2.6, "4. How to play");
-			slText(10, screenHeight / 2.2, "5. Credits");
-			slText(10, screenHeight / 1.9, "6. Quit");
-			slText(screenWidth / 2.8, screenHeight / 1.1, "Ver. 1.0 by Franco Vega");
+			slText(30, screenHeight - 60, "Simple Pong!");
+			slText(10, screenHeight / 1.6, "1. Player vs CPU");//1.1
+			slText(10, screenHeight / 1.9, "2. 2 Players Local");//1.9
+			slText(10, screenHeight / 2.2, "3. Options");//2.2
+			slText(10, screenHeight / 2.6, "4. How to play");//2.6
+			slText(10, screenHeight / 3.2, "5. Credits");//3.2
+			slText(10, screenHeight / 4.2, "6. Quit");//4.2
+			slText(screenWidth / 2.8, screenHeight / 6.3, "Ver. 1.0 by Franco Vega");//6.3
 			//DrawText(FormatText("Simple Pong!"), MeasureText("Simple Pong!", 60) / 6, 20, defaultFontSize, WHITE);
 			//DrawText(FormatText("1. Player vs CPU"), 10, screenHeight / 6.3, defaultFontSize, WHITE);
 			//DrawText(FormatText("2. 2 Players Local"), 10, screenHeight / 4.2, defaultFontSize, WHITE);

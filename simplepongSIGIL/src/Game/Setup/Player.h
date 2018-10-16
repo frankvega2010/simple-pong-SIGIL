@@ -5,11 +5,16 @@
 
 namespace Juego
 {
+	struct Rectangle 
+	{
+		int x;
+		int y;
+		int width;
+		int height;
+	};
+
 	struct Player {
-		int posX;
-		int posY;
-		int sizeX;
-		int sizeY;
+		Rectangle rectangle;
 		int score;
 		int scorePositionX;
 		bool scored;

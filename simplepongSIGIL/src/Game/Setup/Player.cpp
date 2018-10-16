@@ -21,10 +21,10 @@ namespace Juego
 		{
 			for (int i = 0; i < maxplayers; i++)
 			{
-				players[i].posX = 0; // default value
-				players[i].posY = screenHeight / 2; // default value = screenHeight / 2 - 40
-				players[i].sizeX = 20; // mitad = 60
-				players[i].sizeY = 120; // mitad = 60
+				players[i].rectangle.x = 0; // default value
+				players[i].rectangle.y = screenHeight / 2; // default value = screenHeight / 2 - 40
+				players[i].rectangle.width = 20; // mitad = 60
+				players[i].rectangle.height = 120; // mitad = 60
 				players[i].score = 0;
 				players[i].scorePositionX = screenWidth / 2 - 250;
 				players[i].scored = false;
@@ -32,31 +32,31 @@ namespace Juego
 			}
 
 			// Setting player 1 X Position
-			players[0].posX = screenWidth / 34; // default value = screenWidth / 2 - 550 - 20
+			players[0].rectangle.x = screenWidth / 34; // default value = screenWidth / 2 - 550 - 20
 			players[0].scorePositionX = screenWidth / 2 - 250;
 
 			 // Setting player 2 X Position
-			players[1].posX = screenWidth / 2 * 1.9; // default value = screenWidth / 2 + 550
+			players[1].rectangle.x = screenWidth / 2 * 1.9; // default value = screenWidth / 2 + 550
 			players[1].scorePositionX = screenWidth / 2 + 250;
 		}
 
 		void createMiddleLine()
 		{
-			middleLine.posX = screenWidth / 2;
-			middleLine.posY = 0;
-			middleLine.sizeX = 5;
-			middleLine.sizeY = (float)screenHeight;
+			middleLine.rectangle.x = screenWidth / 2;
+			middleLine.rectangle.y = screenHeight / 2;
+			middleLine.rectangle.width = 5;
+			middleLine.rectangle.height = (float)screenHeight;
 		}
 		
 		void playerInput()
 		{
-			if (slGetKey(119)) players[0].posY -= players[0].defaultSpeed * slGetDeltaTime(); // w
-			if (slGetKey(115)) players[0].posY += players[0].defaultSpeed * slGetDeltaTime(); // s
+			if (slGetKey(87)) players[0].rectangle.y += players[0].defaultSpeed * slGetDeltaTime(); // w
+			if (slGetKey(83)) players[0].rectangle.y -= players[0].defaultSpeed * slGetDeltaTime(); // s
 
 			if (!(isPlayer2CPU))
 			{
-				if (slGetKey(SL_KEY_UP)) players[1].posY -= players[1].defaultSpeed * slGetDeltaTime();
-				if (slGetKey(SL_KEY_DOWN)) players[1].posY += players[1].defaultSpeed * slGetDeltaTime();
+				if (slGetKey(SL_KEY_UP)) players[1].rectangle.y += players[1].defaultSpeed * slGetDeltaTime();
+				if (slGetKey(SL_KEY_DOWN)) players[1].rectangle.y -= players[1].defaultSpeed * slGetDeltaTime();
 			}			
 		}
 
@@ -64,28 +64,28 @@ namespace Juego
 		{
 			if (isPlayer2CPU)
 			{
-				players[1].posY = (ball.posY / cpuDifficulty);
+				players[1].rectangle.y = (ball.center.y / cpuDifficulty);
 			}
 
 			for (int i = 0; i < maxplayers; i++)
 			{
-				if (players[i].posY < 0) players[i].posY = 0;
-				if (players[i].posY + players[i].sizeY > screenHeight) players[i].posY = screenHeight - players[i].sizeY;
+				if (players[i].rectangle.y + (players[i].rectangle.y / 2) > screenHeight) players[i].rectangle.y = screenHeight - (players[i].rectangle.y / 2);
+				if (players[i].rectangle.y - (players[i].rectangle.y / 2) < 0) players[i].rectangle.y = 0 + (players[i].rectangle.y/2);
 			}
 		}
 
 		void playerDraw()
 		{
 			// Draw middle line
-			slRectangleFill(middleLine.posX, middleLine.posY, middleLine.sizeX, middleLine.sizeY);
+			slRectangleFill(middleLine.rectangle.x, middleLine.rectangle.y, middleLine.rectangle.width, middleLine.rectangle.height);
 
-			slRectangleFill(players[0].posX, players[0].posY, players[0].sizeX, players[0].sizeY); // red
+			slRectangleFill(players[0].rectangle.x, players[0].rectangle.y, players[0].rectangle.width, players[0].rectangle.height); // red
 
-			slRectangleFill(players[1].posX, players[1].posY, players[1].sizeX, players[1].sizeY); // skyblue
+			slRectangleFill(players[1].rectangle.x, players[1].rectangle.y, players[1].rectangle.width, players[1].rectangle.height); // skyblue
 
 			if (isPlayer2CPU)
 			{
-				slRectangleFill(players[1].posX, players[1].posY, players[1].sizeX, players[1].sizeY); //yellow
+				slRectangleFill(players[1].rectangle.x, players[1].rectangle.y, players[1].rectangle.width, players[1].rectangle.height); //yellow
 			}
 		}
 
