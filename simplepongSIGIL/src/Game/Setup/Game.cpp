@@ -49,6 +49,7 @@ namespace Juego
 
 	static void Init()
 	{
+		
 
 		screenWidth = 1300;//testing purposes 1300x800 default min 720x576
 		screenHeight = 800;
@@ -62,6 +63,8 @@ namespace Juego
 		InitGameplayVariables();
 
 		slWindow(screenWidth, screenHeight, "Simple! Pong", false);
+
+		slSetFont(slLoadFont("res/fonts/calibri.ttf"), 24);
 
 	#ifdef AUDIO
 

@@ -98,7 +98,7 @@ namespace Juego
 
 		void DrawMenu()
 		{
-			slSetFont(slLoadFont("res/fonts/calibri.ttf"), 24);
+			
 			slSetFontSize(defaultFontSize);
 			slText(30, screenHeight - 60, "Simple Pong!");
 			slText(10, screenHeight / 1.6, "1. Player vs CPU");//1.1
