@@ -13,7 +13,7 @@ namespace Juego
 		static void HowtoplayInput()
 		{
 
-			if (slGetKey(49))
+			if (slGetKey(57))
 			{
 				#ifdef AUDIO
 				PlaySound(pong_select_menu);
@@ -53,7 +53,7 @@ namespace Juego
 			slText(screenWidth / 8, screenHeight / 4.0f, "KEY_UP - Go Up");// screenHeight / 4.0f
 			slText(screenWidth / 8, screenHeight / 6, "KEY_DOWN - Go Down");// screenHeight / 6
 			slText(screenWidth / 1.7, screenHeight / 2.5, "Score Limit = 5");// 
-			slText(10, 20, "1. Go back to Menu");
+			slText(10, 20, "9. Go back to Menu");
 		}
 	}
 }

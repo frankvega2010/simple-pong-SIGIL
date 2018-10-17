@@ -12,7 +12,7 @@ namespace Juego
 	{
 		static void CreditosInput()
 		{
-			if (slGetKey(49))
+			if (slGetKey(57))
 			{
 				#ifdef AUDIO
 								PlaySound(pong_select_menu);
@@ -52,7 +52,7 @@ namespace Juego
 			slText(screenWidth / 3, screenHeight / 3.0f, "Bfxr"); // screenHeight / 3.0f
 			slText(screenWidth / 3, screenHeight / 4.0f, "Bosca Ceoil"); // screenHeight / 4.0f
 			slText(screenWidth / 3, screenHeight / 6, "SIGIL"); // screenHeight / 7
-			slText(10, 20, "1. Go back to Menu"); //20
+			slText(10, 20, "9. Go back to Menu"); //20
 		}
 	}
 }

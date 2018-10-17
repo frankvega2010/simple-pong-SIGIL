@@ -14,7 +14,7 @@ namespace Juego
 	{
 		static void GameOverInput()
 		{
-			if (slGetKey(49))
+			if (slGetKey(55))
 			{
 				#ifdef AUDIO
 				PlaySound(pong_select_menu);
@@ -23,7 +23,7 @@ namespace Juego
 				isScreenFinished = true;
 			}
 
-			if (slGetKey(50))
+			if (slGetKey(56))
 			{
 				#ifdef AUDIO
 				PlaySound(pong_select_menu);
@@ -72,8 +72,8 @@ namespace Juego
 				}
 			}
 
-			slText(screenWidth / 4, screenHeight / 3, "1. Go back to Menu");
-			slText(screenWidth / 4, screenHeight / 4, "2. Restart Match");
+			slText(screenWidth / 4, screenHeight / 3, "7. Go back to Menu");
+			slText(screenWidth / 4, screenHeight / 4, "8. Restart Match");
 		}
 	}
 }
