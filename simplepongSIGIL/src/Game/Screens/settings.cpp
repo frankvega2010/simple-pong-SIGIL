@@ -18,101 +18,6 @@ namespace Juego
 	{
 		static void SettingsInput()
 		{
-			/*if (slGetKey(49))
-			{
-				#ifdef AUDIO
-				PlaySound(pong_select_option1);
-				#endif
-				screenWidth = 640;
-				screenHeight = 480;
-				defaultFontSize = 60 / 2;
-				defaultFontSizeGameplayText = 25;
-				defaultFontSizeGameplayScore = 90;
-				//SetWindowSize(screenWidth, screenHeight);
-				InitGameplayVariables();
-				players[0].size = { 10, 60 };
-				players[1].size = { 10, 60 };
-				players[0].defaultSpeed = 375.0f;
-				players[1].defaultSpeed = 375.0f;
-				ball.speed = { 300.0f, 0 };
-				ball.radio = 5;
-				ball.defaultMultiplier = -1.1f;
-				ball.defaultMultiplierHorizontalVertical = -0.7f;
-				ball.defaultMultiplierDown = 15.0f;
-				ball.defaultMultiplierUp = -15.0f;
-			}
-
-			if (slGetKey(50))
-			{
-				#ifdef AUDIO
-				PlaySound(pong_select_option1);
-				#endif
-				screenWidth = 720;
-				screenHeight = 576;
-				defaultFontSize = 60 / 2;
-				defaultFontSizeGameplayText = 25;
-				defaultFontSizeGameplayScore = 90;
-				//SetWindowSize(screenWidth, screenHeight);
-				InitGameplayVariables();
-				players[0].size = { 10, 60 };
-				players[1].size = { 10, 60 };
-				players[0].defaultSpeed = 375.0f;
-				players[1].defaultSpeed = 375.0f;
-				ball.speed = { 300.0f, 0 };
-				ball.radio = 5;
-				ball.defaultMultiplier = -1.1f;
-				ball.defaultMultiplierHorizontalVertical = -0.7f;
-				ball.defaultMultiplierDown = 15.0f;
-				ball.defaultMultiplierUp = -15.0f;
-			}
-
-			if (slGetKey(51))
-			{
-				#ifdef AUDIO
-				PlaySound(pong_select_option1);
-				#endif
-				screenWidth = 1600;
-				screenHeight = 900;
-				defaultFontSize = 60 / 1;
-				defaultFontSizeGameplayText = 30 / 1;
-				defaultFontSizeGameplayScore = 120;
-				//SetWindowSize(screenWidth, screenHeight);
-				InitGameplayVariables();
-				players[0].size = { 20, 120 };
-				players[1].size = { 20, 120 };
-				players[0].defaultSpeed = 750.0f;
-				players[1].defaultSpeed = 750.0f;
-				ball.speed = { 500.0f, 0 };
-				ball.radio = 10;
-				ball.defaultMultiplier = -1.1f;
-				ball.defaultMultiplierHorizontalVertical = -1.2f;
-				ball.defaultMultiplierDown = 20.0f;
-				ball.defaultMultiplierUp = -20.0f;
-			}
-
-			if (slGetKey(52))
-			{
-				#ifdef AUDIO
-				PlaySound(pong_select_option1);
-				#endif
-				screenWidth = 1300;
-				screenHeight = 800;
-				defaultFontSize = 60 / 1;
-				defaultFontSizeGameplayText = 30 / 1;
-				defaultFontSizeGameplayScore = 120;
-				//SetWindowSize(screenWidth, screenHeight);
-				InitGameplayVariables();
-				players[0].size = { 20, 120 };
-				players[1].size = { 20, 120 };
-				players[0].defaultSpeed = 750.0f;
-				players[1].defaultSpeed = 750.0f;
-				ball.speed = { 500.0f, 0 };
-				ball.radio = 10;
-				ball.defaultMultiplier = -1.1f;
-				ball.defaultMultiplierHorizontalVertical = -1.2f;
-				ball.defaultMultiplierDown = 20.0f;
-				ball.defaultMultiplierUp = -20.0f;
-			}*/
 
 			if (slGetKey(54))
 			{
@@ -167,12 +72,11 @@ namespace Juego
 		void DrawSettings()
 		{
 			slSetFontSize(defaultFontSize);
-			//slText(30, 440, "Resolution");
 
-			slText(30, 440, "CPU Difficulty");
-			slText(30, 380, "6. Easy");
-			slText(30, 300, "7. Normal");
-			slText(30, 220, "8. Hard");
+			slText(30, screenHeight / 1.1, "CPU Difficulty");
+			slText(30, screenHeight / 1.3, "6. Easy");
+			slText(30, screenHeight / 1.45, "7. Normal");
+			slText(30, screenHeight / 1.65, "8. Hard");
 			slText(10, 20, "9. Go back to Menu");
 		}
 	}

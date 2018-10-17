@@ -151,6 +151,7 @@ XCOPY "$(SolutionDir)res" "$(TargetDir)res" /E /Y</Command>
       <AdditionalDependencies>sigil.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs/sigil-vc2015/lib/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>MKDIR "$(TargetDir)res"
