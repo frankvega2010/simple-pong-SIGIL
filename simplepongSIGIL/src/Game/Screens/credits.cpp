@@ -12,7 +12,6 @@ namespace Juego
 	{
 		static void CreditosInput()
 		{
-
 			if (slGetKey(49))
 			{
 				#ifdef AUDIO
@@ -45,25 +44,15 @@ namespace Juego
 		void DrawCredits()
 		{
 			slSetFontSize(defaultFontSize);
-			slText(screenWidth / 3, 20, "Credits");
-			slText(screenWidth / 3, screenHeight / 7, "Version 1.0");
-			slText(screenWidth / 4, screenHeight / 4.0f, "Game made by");
-			slText(screenWidth / 3, screenHeight / 3.0f, "Franco Vega");
-			slText(screenWidth / 4, screenHeight / 2.0f, "Tools Used");
-			slText(screenWidth / 3, screenHeight / 1.7f, "Bfxr");
-			slText(screenWidth / 3, screenHeight / 1.5f, "Bosca Ceoil");
-			slText(screenWidth / 3, screenHeight / 1.35f, "SIGIL");
-			slText(10, screenHeight - 80, "1. Go back to Menu");
-
-			//DrawText(FormatText("Credits"), screenWidth / 3, 20, defaultFontSize, WHITE);
-			//DrawText(FormatText("Version 1.0"), screenWidth / 3, screenHeight / 7, defaultFontSize, WHITE);
-			//DrawText(FormatText("Game made by"), screenWidth / 4, screenHeight / 4.0f, defaultFontSize, WHITE);
-			//DrawText(FormatText("Franco Vega"), screenWidth / 3, screenHeight / 3.0f, defaultFontSize, WHITE);
-			//DrawText(FormatText("Tools Used"), screenWidth / 4, screenHeight / 2.0f, defaultFontSize, WHITE);
-			//DrawText(FormatText("Bfxr"), screenWidth / 3, screenHeight / 1.7f, defaultFontSize, WHITE);
-			//DrawText(FormatText("Bosca Ceoil"), screenWidth / 3, screenHeight / 1.5f, defaultFontSize, WHITE);
-			//DrawText(FormatText("Raylib"), screenWidth / 3, screenHeight / 1.35f, defaultFontSize, WHITE);
-			//DrawText(FormatText("1. Go back to Menu"), 10, screenHeight - 80, defaultFontSize, WHITE);
+			slText(screenWidth / 3, screenHeight - 80, "Credits"); // screenHeight - 80
+			slText(screenWidth / 3, screenHeight / 1.25f, "Version 1.0"); // screenHeight / 1.35f
+			slText(screenWidth / 4, screenHeight / 1.5f, "Game made by"); // screenHeight / 1.5f
+			slText(screenWidth / 3, screenHeight / 1.7f, "Franco Vega"); // screenHeight / 1.7f
+			slText(screenWidth / 4, screenHeight / 2.3f, "Tools Used"); // screenHeight / 2.0f
+			slText(screenWidth / 3, screenHeight / 3.0f, "Bfxr"); // screenHeight / 3.0f
+			slText(screenWidth / 3, screenHeight / 4.0f, "Bosca Ceoil"); // screenHeight / 4.0f
+			slText(screenWidth / 3, screenHeight / 6, "SIGIL"); // screenHeight / 7
+			slText(10, 20, "1. Go back to Menu"); //20
 		}
 	}
 }
