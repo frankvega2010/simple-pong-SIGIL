@@ -1,6 +1,5 @@
 #include "gameplay.h"
 
-#include <cmath>
 #include "sl.h"
 #include "Setup\Game.h"
 #include "Setup\Player.h"
@@ -70,9 +69,6 @@ namespace Juego
 
 		void UpdateGameplayScreen()
 		{
-			//---------- Input
-			GameplayInput();
-
 			// Score Limit
 			for (int i = 0; i < maxplayers; i++)
 			{
@@ -90,6 +86,8 @@ namespace Juego
 
 			ballUpdate();
 
+			//---------- Input
+			GameplayInput();
 
 			// Collision logic: ball vs vertical walls FOR BOTH PLAYERS
 			if ((ball.center.x + ball.radio) >= screenWidth && ball.active)

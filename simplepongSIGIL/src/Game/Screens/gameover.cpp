@@ -51,8 +51,7 @@ namespace Juego
 		void DrawGameOver()
 		{
 			slSetFontSize(defaultFontSize);
-			slText(screenWidth / 4, screenHeight / 16, "Match Finished!");
-			//DrawText(FormatText("Match Finished!"), screenWidth / 4, screenHeight / 16, defaultFontSize, WHITE);
+			slText(screenWidth / 3.5, screenHeight / 1.2, "Match Finished!");
 
 			for (int i = 0; i < maxplayers; i++)
 			{
@@ -60,21 +59,21 @@ namespace Juego
 				{
 					if (players[1].score >= scoreLimit && isPlayer2CPU)
 					{
-						//DrawText(FormatText("Player CPU won!"), screenWidth / 4, screenHeight / 3, defaultFontSize, WHITE);
-						slText(screenWidth / 4, screenHeight / 3, "Player CPU won!");
+						slText(screenWidth / 4, screenHeight / 1.5, "Player CPU won!");
 					}
 					else
 					{
-						//DrawText(FormatText("Player %i won!", i + 1), screenWidth / 4, screenHeight / 3, defaultFontSize, WHITE);
-						slText(screenWidth / 4, screenHeight / 3, "Player won!");
+						switch (i)
+						{
+						case 0: slText(screenWidth / 4, screenHeight / 1.5, "Player 1 won!"); break;
+						case 1: slText(screenWidth / 4, screenHeight / 1.5, "Player 2 won!"); break;
+						}
 					}
 				}
 			}
 
-			slText(screenWidth / 4 - 20, screenHeight / 2, "1. Go back to Menu");
-			slText(screenWidth / 4 - 20, screenHeight / 1.5, "2. Restart Match");
-			//DrawText(FormatText("1. Go back to Menu"), screenWidth / 4 - 20, screenHeight / 2, defaultFontSize, WHITE); // default values  screenWidth / 2 - 250, 300
-			//DrawText(FormatText("2. Restart Match"), screenWidth / 4 - 20, screenHeight / 1.5, defaultFontSize, WHITE); // default values screenWidth / 2 - 250, 400
+			slText(screenWidth / 4, screenHeight / 3, "1. Go back to Menu");
+			slText(screenWidth / 4, screenHeight / 4, "2. Restart Match");
 		}
 	}
 }

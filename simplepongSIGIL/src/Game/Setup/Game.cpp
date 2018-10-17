@@ -1,6 +1,6 @@
 #include "Game.h"
-#include "sl.h"
 
+#include "sl.h"
 #include "Screens/gameplay.h"
 #include "Screens/menu.h"
 #include "Screens/gameover.h"
@@ -42,6 +42,10 @@ namespace Juego
 	int defaultFontSize;
 	int defaultFontSizeGameplayText;
 	int defaultFontSizeGameplayScore;
+
+	int currentKeyState[512] = { 0 };
+	int previousKeyState[512] = { 0 };
+
 
 	static void Init()
 	{
@@ -109,7 +113,7 @@ namespace Juego
 		case Howtoplay: Howtoplay_Section::DrawHowtoplay(); break;
 		}
 
-		slRender();
+		
 	}
 
 	static void Update()
@@ -253,6 +257,7 @@ namespace Juego
 			Update();
 			if (gamePhase == 0) return;
 			Draw();
+			slRender();
 		}
 		DeInit();
 	}
