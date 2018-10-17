@@ -10,29 +10,34 @@ namespace Juego
 {
 	int scoreLimit;
 	static bool gameON;
-	static int maxAngle = -600;
-	static float ballMaxSpeed = 2200.0f;
+	static int maxAngle = -800;
+	static float ballMaxSpeed = 1800.0f;
+
+	static const int minBallSpeedY = 200;
+	static const int medBallSpeedY = 400;
+	static const int maxBallSpeedY = 600;
 
 	namespace Gameplay_Section
 	{
 		static bool CheckCollisionCircleRec(Center center, float radius, Rectangle rec)
 		{
-			int recCenterX = (int)(rec.x + rec.width / 2.0f);
-			int recCenterY = (int)(rec.y + rec.height / 2.0f);
+			if (center.x - radius < players[0].rectangle.x + players[0].rectangle.width / 2)
+			{
+				if (center.y + radius > players[0].rectangle.y - players[0].rectangle.height / 2 && center.y + radius < players[0].rectangle.y + players[0].rectangle.height / 2)
+				{
+					return true;
+				}
+			}
 
-			float dx = (float)fabs(center.x - recCenterX);
-			float dy = (float)fabs(center.y - recCenterY);
+			if (center.x + radius > players[1].rectangle.x - players[1].rectangle.width / 2)
+			{
+				if (center.y + radius > players[1].rectangle.y - players[1].rectangle.height / 2 && center.y + radius < players[1].rectangle.y + players[1].rectangle.height / 2)
+				{
+					return true;
+				}
+			}
 
-			if (dx > (rec.width / 2.0f + radius)) { return false; }
-			if (dy > (rec.height / 2.0f + radius)) { return false; }
-
-			if (dx <= (rec.width / 2.0f)) { return true; }
-			if (dy <= (rec.height / 2.0f)) { return true; }
-
-			float cornerDistanceSq = (dx - rec.width / 2.0f)*(dx - rec.width / 2.0f) +
-				(dy - rec.height / 2.0f)*(dy - rec.height / 2.0f);
-
-			return (cornerDistanceSq <= (radius*radius));
+			return false;
 		}
 
 		static void GameplayInput()
@@ -135,20 +140,43 @@ namespace Juego
 			//////////////////////////////////////////////////////--------------------------------------------------------------------
 			for (int i = 0; i < maxplayers; i++)
 			{
+
+				//if(ball.center.x + ball.radio >=)
 				if (CheckCollisionCircleRec(ball.center, ball.radio, players[i].rectangle))
 				{
+					if (ball.speedX < 0)
+					{
+						if (ball.center.y >(players[0].rectangle.y + players[0].rectangle.height / 3)) ball.speedY = maxBallSpeedY;
+						else if (ball.center.y >(players[0].rectangle.y + players[0].rectangle.height / 6)) ball.speedY = medBallSpeedY;
+						else if (ball.center.y > players[0].rectangle.y) ball.speedY = minBallSpeedY;
+
+						else if (ball.center.y < (players[0].rectangle.y - players[0].rectangle.height / 3)) ball.speedY = -(maxBallSpeedY);
+						else if (ball.center.y < (players[0].rectangle.y - players[0].rectangle.height / 6)) ball.speedY = -(medBallSpeedY);
+						else if (ball.center.y < players[0].rectangle.y) ball.speedY = -(minBallSpeedY);
+					}
+					else if (ball.speedX > 0)
+					{
+						if (ball.center.y >(players[1].rectangle.y + players[1].rectangle.height / 3)) ball.speedY = maxBallSpeedY;
+						else if (ball.center.y >(players[1].rectangle.y + players[1].rectangle.height / 6)) ball.speedY = medBallSpeedY;
+						else if (ball.center.y > players[1].rectangle.y) ball.speedY = minBallSpeedY;
+
+						else if (ball.center.y < (players[1].rectangle.y - players[1].rectangle.height / 3)) ball.speedY = -(maxBallSpeedY);
+						else if (ball.center.y < (players[1].rectangle.y - players[1].rectangle.height / 6)) ball.speedY = -(medBallSpeedY);
+						else if (ball.center.y < players[1].rectangle.y) ball.speedY = -(minBallSpeedY);
+					}
+
 					if (ball.speedX < 0 || ball.speedX > 0)
 					{
 						#ifdef AUDIO
-						PlaySound(pong_hit_player);
+												PlaySound(pong_hit_player);
 						#endif
-						if (ball.center.x - ball.radio < players[0].rectangle.x + players[0].rectangle.width)
+						if (ball.center.x - ball.radio < players[0].rectangle.x + players[0].rectangle.width / 2)
 						{
-							ball.center.x = players[0].rectangle.x + players[0].rectangle.width + ball.radio;
+							ball.center.x = players[0].rectangle.x + players[0].rectangle.width / 2 + ball.radio;
 						}
-						if (ball.center.x + ball.radio > players[1].rectangle.x)
+						if (ball.center.x + ball.radio > players[1].rectangle.x - players[1].rectangle.width / 2)
 						{
-							ball.center.x = players[1].rectangle.x - ball.radio;
+							ball.center.x = players[1].rectangle.x - players[1].rectangle.width / 2 - ball.radio;
 						}
 
 						if (ball.speedX >= ballMaxSpeed)
@@ -162,9 +190,7 @@ namespace Juego
 						else
 						{
 							ball.speedX *= -1.1;
-						}				
-						ball.speedY = ((players[i].rectangle.y + players[i].rectangle.height / 2) - ball.center.y) / (players[i].rectangle.height / 2) * (maxAngle);
-						
+						}	
 					}
 				}
 
@@ -209,8 +235,6 @@ namespace Juego
 					slSetFontSize(defaultFontSizeGameplayText);
 					slText(screenWidth / 2 - 280, screenHeight / 4, "Press");
 					slText(screenWidth / 2 + 20, screenHeight / 4, "'SPACEBAR' to begin!");
-					//DrawText("Press", screenWidth / 2 - 280, screenHeight / 4, defaultFontSizeGameplayText, RED); // default 380 300
-					//DrawText("'SPACEBAR' to begin!", screenWidth / 2 + 20, screenHeight / 4, defaultFontSizeGameplayText, RED);
 				}
 			}
 

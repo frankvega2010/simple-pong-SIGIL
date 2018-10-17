@@ -69,8 +69,8 @@ namespace Juego
 
 			for (int i = 0; i < maxplayers; i++)
 			{
-				if (players[i].rectangle.y + (players[i].rectangle.y / 2) > screenHeight) players[i].rectangle.y = screenHeight - (players[i].rectangle.y / 2);
-				if (players[i].rectangle.y - (players[i].rectangle.y / 2) < 0) players[i].rectangle.y = 0 + (players[i].rectangle.y/2);
+				if (players[i].rectangle.y + (players[i].rectangle.height / 2) > screenHeight) players[i].rectangle.y = screenHeight - (players[i].rectangle.height / 2);
+				if (players[i].rectangle.y - (players[i].rectangle.height / 2) < 0) players[i].rectangle.y = 0 + (players[i].rectangle.height /2);
 			}
 		}
 
