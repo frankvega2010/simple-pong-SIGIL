@@ -64,7 +64,7 @@ namespace Juego
 		{
 			if (isPlayer2CPU)
 			{
-				players[1].rectangle.y = (ball.center.y / cpuDifficulty);
+				players[1].rectangle.y = (ball.center.y / cpuDifficulty) + players[1].rectangle.height/2;
 			}
 
 			for (int i = 0; i < maxplayers; i++)
