@@ -140,8 +140,6 @@ namespace Juego
 			//////////////////////////////////////////////////////--------------------------------------------------------------------
 			for (int i = 0; i < maxplayers; i++)
 			{
-
-				//if(ball.center.x + ball.radio >=)
 				if (CheckCollisionCircleRec(ball.center, ball.radio, players[i].rectangle))
 				{
 					if (ball.speedX < 0)
@@ -233,7 +231,7 @@ namespace Juego
 				if (gameON)
 				{
 					slSetFontSize(defaultFontSizeGameplayText);
-					slText(screenWidth / 2 - 280, screenHeight / 4, "Press");
+					slText(screenWidth / 2 - 100, screenHeight / 4, "Press");
 					slText(screenWidth / 2 + 20, screenHeight / 4, "'SPACEBAR' to begin!");
 				}
 			}
@@ -242,8 +240,15 @@ namespace Juego
 			for (int i = 0; i < maxplayers; i++)
 			{
 				slSetFontSize(defaultFontSizeGameplayScore);
-				slText(players[i].scorePositionX, screenHeight / 80, "0");
-				//DrawText(FormatText("%i", players[i].score), players[i].scorePositionX, screenHeight / 80, defaultFontSizeGameplayScore, WHITE);			
+				switch (players[i].score)
+				{
+				case 0: slText(players[i].scorePositionX, screenHeight - 80, "0"); break;
+				case 1: slText(players[i].scorePositionX, screenHeight - 80, "1"); break;
+				case 2: slText(players[i].scorePositionX, screenHeight - 80, "2"); break;
+				case 3:	slText(players[i].scorePositionX, screenHeight - 80, "3"); break;
+				case 4: slText(players[i].scorePositionX, screenHeight - 80, "4"); break;
+				case 5: slText(players[i].scorePositionX, screenHeight - 80, "5"); break;
+				}	
 			}
 		}
 	}
