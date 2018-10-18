@@ -10,11 +10,14 @@ namespace Juego
 	static const int Menu = 6;
 	static const int Restart_Gameplay = 5;
 
+	static const int KEY_7 = 55;
+	static const int KEY_8 = 56;
+
 	namespace GameOver_Section
 	{
 		static void GameOverInput()
 		{
-			if (slGetKey(55))
+			if (slGetKey(KEY_7))
 			{
 				#ifdef AUDIO
 				slSoundPlay(pong_select_menu);
@@ -23,7 +26,7 @@ namespace Juego
 				isScreenFinished = true;
 			}
 
-			if (slGetKey(56))
+			if (slGetKey(KEY_8))
 			{
 				#ifdef AUDIO
 				slSoundPlay(pong_select_menu);

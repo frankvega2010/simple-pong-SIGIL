@@ -15,6 +15,9 @@ namespace Juego
 	const float cpu_normal = 1.25f;
 	const float cpu_hard = 1.24f;
 
+	static const int KEY_W = 87;
+	static const int KEY_S = 83;
+
 	namespace Gameplay_Section
 	{
 		void createPlayer()
@@ -50,8 +53,8 @@ namespace Juego
 		
 		void playerInput()
 		{
-			if (slGetKey(87)) players[0].rectangle.y += players[0].defaultSpeed * slGetDeltaTime(); // w
-			if (slGetKey(83)) players[0].rectangle.y -= players[0].defaultSpeed * slGetDeltaTime(); // s
+			if (slGetKey(KEY_W)) players[0].rectangle.y += players[0].defaultSpeed * slGetDeltaTime(); // w
+			if (slGetKey(KEY_S)) players[0].rectangle.y -= players[0].defaultSpeed * slGetDeltaTime(); // s
 
 			if (!(isPlayer2CPU))
 			{

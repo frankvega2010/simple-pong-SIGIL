@@ -43,9 +43,6 @@ namespace Juego
 	int defaultFontSizeGameplayText;
 	int defaultFontSizeGameplayScore;
 
-	int currentKeyState[512] = { 0 };
-	int previousKeyState[512] = { 0 };
-
 	int pong_hit_wall;
 
 	int pong_hit_player;
@@ -109,8 +106,6 @@ namespace Juego
 		case Credits: Credits_Section::DrawCredits(); break;
 		case Howtoplay: Howtoplay_Section::DrawHowtoplay(); break;
 		}
-
-		
 	}
 
 	static void Update()

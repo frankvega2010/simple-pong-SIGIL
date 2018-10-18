@@ -14,12 +14,17 @@ namespace Juego
 {
 	static const int Menu = 6;
 
+	static const int KEY_6 = 54;
+	static const int KEY_7 = 55;
+	static const int KEY_8 = 56;
+	static const int KEY_9 = 57;
+
 	namespace Settings_Section
 	{
 		static void SettingsInput()
 		{
 
-			if (slGetKey(54))
+			if (slGetKey(KEY_6))
 			{
 				#ifdef AUDIO
 				slSoundPlay(pong_select_option2);
@@ -27,7 +32,7 @@ namespace Juego
 				cpuDifficulty = cpu_easy;
 			}
 
-			if (slGetKey(55))
+			if (slGetKey(KEY_7))
 			{
 				#ifdef AUDIO
 				slSoundPlay(pong_select_option2);
@@ -35,7 +40,7 @@ namespace Juego
 				cpuDifficulty = cpu_normal;
 			}
 
-			if (slGetKey(56))
+			if (slGetKey(KEY_8))
 			{
 				#ifdef AUDIO
 				slSoundPlay(pong_select_option2);
@@ -43,7 +48,7 @@ namespace Juego
 				cpuDifficulty = cpu_hard;
 			}
 
-			if (slGetKey(57))
+			if (slGetKey(KEY_9))
 			{
 				#ifdef AUDIO
 				slSoundPlay(pong_select_menu);

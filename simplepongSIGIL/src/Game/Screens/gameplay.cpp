@@ -8,6 +8,7 @@
 namespace Juego
 {
 	int scoreLimit;
+	static const int KEY_SPACEBAR = 32;
 	static bool gameON;
 	static int maxAngle = -800;
 	static float ballMaxSpeed = 1800.0f;
@@ -44,9 +45,17 @@ namespace Juego
 			// Ball launching logic
 			if (!ball.active)
 			{
-				if (slGetKey(32))
+				if (slGetKey(KEY_SPACEBAR))
 				{
 						ball.active = true;
+				}
+
+				if (slGetKey(SL_KEY_ESCAPE))
+				{
+					#ifdef AUDIO
+					slSoundPlay(pong_select_menu);
+					#endif
+					isScreenFinished = true;
 				}
 			}
 		}
@@ -231,6 +240,9 @@ namespace Juego
 					slSetFontSize(defaultFontSizeGameplayText);
 					slText(screenWidth / 2 - 100, screenHeight / 4, "Press");
 					slText(screenWidth / 2 + 20, screenHeight / 4, "'SPACEBAR' to begin!");
+					slSetForeColor(1.0, 0.30, 0.30, 1);
+					slText(screenWidth / 2 - 100, screenHeight / 7, "Press");
+					slText(screenWidth / 2 + 20, screenHeight / 7, "'ESC' to end the match!");
 					slSetForeColor(1.0, 1.0, 1.0, 1.0);
 				}
 			}

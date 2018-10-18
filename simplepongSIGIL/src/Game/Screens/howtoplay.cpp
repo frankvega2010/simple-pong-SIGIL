@@ -7,13 +7,14 @@
 namespace Juego
 {
 	static const int Menu = 6;
+	static const int KEY_9 = 57;
 
 	namespace Howtoplay_Section
 	{
 		static void HowtoplayInput()
 		{
 
-			if (slGetKey(57))
+			if (slGetKey(KEY_9))
 			{
 				#ifdef AUDIO
 				slSoundPlay(pong_select_menu);
