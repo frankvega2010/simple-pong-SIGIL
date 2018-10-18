@@ -64,7 +64,7 @@ namespace Juego
 
 		slWindow(screenWidth, screenHeight, "Simple! Pong", false);
 
-		slSetFont(slLoadFont("res/fonts/calibri.ttf"), 24);
+		slSetFont(slLoadFont("res/fonts/FORCED_SQUARE.ttf"), 24);
 
 	#ifdef AUDIO
 

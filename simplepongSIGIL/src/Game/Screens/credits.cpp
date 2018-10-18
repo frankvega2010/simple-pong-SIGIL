@@ -52,6 +52,10 @@ namespace Juego
 			slText(screenWidth / 3, screenHeight / 3.0f, "Bfxr"); // screenHeight / 3.0f
 			slText(screenWidth / 3, screenHeight / 4.0f, "Bosca Ceoil"); // screenHeight / 4.0f
 			slText(screenWidth / 3, screenHeight / 6, "SIGIL"); // screenHeight / 7
+			slText(screenWidth / 1.6, screenHeight / 2.3f, "Font made by");
+			slSetFontSize(defaultFontSize/1.5);
+			slText(screenWidth / 1.65, screenHeight / 2.6f, "www.drawperfect.com");
+			slSetFontSize(defaultFontSize);
 			slText(10, 20, "9. Go back to Menu"); //20
 		}
 	}
