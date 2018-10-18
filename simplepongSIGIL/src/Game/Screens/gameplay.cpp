@@ -20,17 +20,17 @@ namespace Juego
 	{
 		static bool CheckCollisionCircleRec(Center center, float radius, Rectangle rec)
 		{
-			if (center.x - radius < players[0].rectangle.x + players[0].rectangle.width / 2)
+			if (center.x - radius < players[0].rectangle.x + players[0].rectangle.width / 2 && center.x > players[0].rectangle.x - players[0].rectangle.width / 2)
 			{
-				if (center.y + radius > players[0].rectangle.y - players[0].rectangle.height / 2 && center.y + radius < players[0].rectangle.y + players[0].rectangle.height / 2)
+				if (center.y + radius > players[0].rectangle.y - players[0].rectangle.height / 2 && center.y - radius < players[0].rectangle.y + players[0].rectangle.height / 2)
 				{
 					return true;
 				}
 			}
 
-			if (center.x + radius > players[1].rectangle.x - players[1].rectangle.width / 2)
+			if (center.x + radius > players[1].rectangle.x - players[1].rectangle.width / 2 && center.x < players[1].rectangle.x + players[1].rectangle.width / 2)
 			{
-				if (center.y + radius > players[1].rectangle.y - players[1].rectangle.height / 2 && center.y + radius < players[1].rectangle.y + players[1].rectangle.height / 2)
+				if (center.y + radius > players[1].rectangle.y - players[1].rectangle.height / 2 && center.y - radius < players[1].rectangle.y + players[1].rectangle.height / 2)
 				{
 					return true;
 				}
@@ -49,9 +49,6 @@ namespace Juego
 						ball.active = true;
 				}
 			}
-
-			// Player Movement
-			playerInput();
 		}
 
 		void InitGameplayVariables()
@@ -81,6 +78,8 @@ namespace Juego
 					return;
 				}
 			}
+			// Player Movement
+			playerInput();
 
 			playerUpdate();
 
