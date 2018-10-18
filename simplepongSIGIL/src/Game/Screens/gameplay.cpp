@@ -228,9 +228,11 @@ namespace Juego
 			{
 				if (gameON)
 				{
+					slSetForeColor(1.0, 0.10, 0.10, 1);
 					slSetFontSize(defaultFontSizeGameplayText);
 					slText(screenWidth / 2 - 100, screenHeight / 4, "Press");
 					slText(screenWidth / 2 + 20, screenHeight / 4, "'SPACEBAR' to begin!");
+					slSetForeColor(1.0, 1.0, 1.0, 1.0);
 				}
 			}
 
