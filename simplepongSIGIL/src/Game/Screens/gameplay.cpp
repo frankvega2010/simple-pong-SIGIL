@@ -75,7 +75,7 @@ namespace Juego
 				if (players[i].score >= scoreLimit)
 				{
 					#ifdef AUDIO
-					PlaySound(pong_match_end);
+					slSoundPlay(pong_match_end);
 					#endif
 					isScreenFinished = true;
 					return;
@@ -93,7 +93,7 @@ namespace Juego
 			if ((ball.center.x + ball.radio) >= screenWidth && ball.active)
 			{
 			#ifdef AUDIO
-				PlaySound(pong_player_scored);
+				slSoundPlay(pong_player_scored);
 			#endif
 
 				ball.active = false;
@@ -105,7 +105,7 @@ namespace Juego
 			else if ((ball.center.x + ball.radio) <= 0 && ball.active)
 			{
 			#ifdef AUDIO
-				PlaySound(pong_player_scored);
+				slSoundPlay(pong_player_scored);
 			#endif
 
 				ball.active = false;
@@ -119,7 +119,7 @@ namespace Juego
 			if ((ball.center.y - ball.radio) <= 0)
 			{
 				#ifdef AUDIO
-								PlaySound(pong_hit_wall);
+				slSoundPlay(pong_hit_wall);
 				#endif
 
 				ball.center.y = 0 + ball.radio;
@@ -128,7 +128,7 @@ namespace Juego
 			if ((ball.center.y + ball.radio) >= screenHeight)
 			{
 				#ifdef AUDIO
-								PlaySound(pong_hit_wall);
+				slSoundPlay(pong_hit_wall);
 				#endif
 				ball.center.y = screenHeight - ball.radio;
 				ball.speedY *= ball.defaultMultiplierHorizontalVertical;
@@ -164,7 +164,7 @@ namespace Juego
 					if (ball.speedX < 0 || ball.speedX > 0)
 					{
 						#ifdef AUDIO
-												PlaySound(pong_hit_player);
+						slSoundPlay(pong_hit_player);
 						#endif
 						if (ball.center.x - ball.radio < players[0].rectangle.x + players[0].rectangle.width / 2)
 						{

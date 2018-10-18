@@ -26,7 +26,7 @@ namespace Juego
 			if (slGetKey(49)) //one
 			{
 				#ifdef AUDIO
-								PlaySound(pong_select_menu);
+				slSoundPlay(pong_select_menu);
 				#endif
 				selectOption = PlayGame;
 				isPlayer2CPU = true;
@@ -36,7 +36,7 @@ namespace Juego
 			if (slGetKey(50))
 			{
 				#ifdef AUDIO
-								PlaySound(pong_select_menu);
+				slSoundPlay(pong_select_menu);
 				#endif
 				selectOption = PlayGame;
 				isPlayer2CPU = false;
@@ -46,7 +46,7 @@ namespace Juego
 			if (slGetKey(51))
 			{
 				#ifdef AUDIO
-								PlaySound(pong_select_menu);
+				slSoundPlay(pong_select_menu);
 				#endif
 				selectOption = Settings;
 				isScreenFinished = true;
@@ -55,7 +55,7 @@ namespace Juego
 			if (slGetKey(52))
 			{
 				#ifdef AUDIO
-								PlaySound(pong_select_menu);
+				slSoundPlay(pong_select_menu);
 				#endif
 				selectOption = Howtoplay;
 				isScreenFinished = true;
@@ -64,7 +64,7 @@ namespace Juego
 			if (slGetKey(53))
 			{
 				#ifdef AUDIO
-				PlaySound(pong_select_menu);
+				slSoundPlay(pong_select_menu);
 				#endif
 				selectOption = Credits;
 				isScreenFinished = true;
@@ -80,7 +80,7 @@ namespace Juego
 		void UpdateMenuScreen()
 		{
 			#ifdef AUDIO
-			UpdateMusicStream(pong_menu_song);
+			//slSoundResumeAll();
 			#endif
 			
 			MenuInput();

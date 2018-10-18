@@ -22,7 +22,7 @@ namespace Juego
 			if (slGetKey(54))
 			{
 				#ifdef AUDIO
-				PlaySound(pong_select_option2);
+				slSoundPlay(pong_select_option2);
 				#endif
 				cpuDifficulty = cpu_easy;
 			}
@@ -30,7 +30,7 @@ namespace Juego
 			if (slGetKey(55))
 			{
 				#ifdef AUDIO
-				PlaySound(pong_select_option2);
+				slSoundPlay(pong_select_option2);
 				#endif
 				cpuDifficulty = cpu_normal;
 			}
@@ -38,7 +38,7 @@ namespace Juego
 			if (slGetKey(56))
 			{
 				#ifdef AUDIO
-				PlaySound(pong_select_option2);
+				slSoundPlay(pong_select_option2);
 				#endif
 				cpuDifficulty = cpu_hard;
 			}
@@ -46,7 +46,7 @@ namespace Juego
 			if (slGetKey(57))
 			{
 				#ifdef AUDIO
-				PlaySound(pong_select_menu);
+				slSoundPlay(pong_select_menu);
 				#endif
 				selectOption = Menu;
 				isScreenFinished = true;
@@ -55,9 +55,6 @@ namespace Juego
 
 		void UpdateSettingsScreen()
 		{
-			#ifdef AUDIO
-			UpdateMusicStream(pong_menu_song);
-			#endif
 			SettingsInput();
 		}
 		void InitSettingsScreen()

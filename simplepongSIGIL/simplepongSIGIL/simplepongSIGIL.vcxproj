@@ -113,6 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)libs/sigil-vc2015/include/;$(SolutionDir)dll/;%(AdditionalIncludeDirectories);$(SolutionDir)src/Game/;$(SolutionDir)src/;$(SolutionDir)src/Game/Setup;$(SolutionDir)src/Game/Screens</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AUDIO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)libs/sigil-vc2015/lib/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -144,6 +145,7 @@ XCOPY "$(SolutionDir)res" "$(TargetDir)res" /E /Y</Command>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)libs/sigil-vc2015/include/;$(SolutionDir)dll/;;$(SolutionDir)src/Game/;$(SolutionDir)src/;$(SolutionDir)src/Game/Setup;$(SolutionDir)src/Game/Screens</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>AUDIO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

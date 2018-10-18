@@ -1,8 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-//#include "raylib.h"
-
 namespace Juego
 {
 	extern int screenWidth;
@@ -16,15 +14,13 @@ namespace Juego
 	extern int defaultFontSizeGameplayText;
 	extern int defaultFontSizeGameplayScore;
 
-	//extern Sound pong_hit_wall;
-	//extern Sound pong_hit_player;
-	//extern Sound pong_player_scored;
-	//extern Sound pong_match_end;
-	//extern Sound pong_select_menu;
-	//extern Sound pong_select_option1;
-	//extern Sound pong_select_option2;
-
-	//extern Music pong_menu_song;
+	extern int pong_hit_wall;
+	extern int pong_hit_player;
+	extern int pong_player_scored;
+	extern int pong_match_end;
+	extern int pong_select_menu;
+	extern int pong_select_option2;
+	extern int pong_menu_song;
 
 	void Execute();
 }

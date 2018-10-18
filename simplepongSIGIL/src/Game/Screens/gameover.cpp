@@ -17,7 +17,7 @@ namespace Juego
 			if (slGetKey(55))
 			{
 				#ifdef AUDIO
-				PlaySound(pong_select_menu);
+				slSoundPlay(pong_select_menu);
 				#endif
 				selectOption = Menu;
 				isScreenFinished = true;
@@ -26,7 +26,7 @@ namespace Juego
 			if (slGetKey(56))
 			{
 				#ifdef AUDIO
-				PlaySound(pong_select_menu);
+				slSoundPlay(pong_select_menu);
 				#endif
 				selectOption = Restart_Gameplay;
 				isScreenFinished = true;

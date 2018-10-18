@@ -46,12 +46,19 @@ namespace Juego
 	int currentKeyState[512] = { 0 };
 	int previousKeyState[512] = { 0 };
 
+	int pong_hit_wall;
+
+	int pong_hit_player;
+	int pong_player_scored;
+	int pong_match_end;
+	int pong_select_menu;
+	int pong_select_option2;
+	int pong_menu_song;
+
 
 	static void Init()
 	{
-		
-
-		screenWidth = 1300;//testing purposes 1300x800 default min 720x576
+		screenWidth = 1300;
 		screenHeight = 800;
 
 		selectOption = 0;
@@ -64,33 +71,21 @@ namespace Juego
 
 		slWindow(screenWidth, screenHeight, "Simple! Pong", false);
 
-		slSetFont(slLoadFont("res/fonts/FORCED_SQUARE.ttf"), 24);
-
-	#ifdef AUDIO
-
-		//InitAudioDevice();
-
-		//pong_hit_wall = LoadSound("res/wall.wav");
+#ifdef AUDIO
 		pong_hit_wall = slLoadWAV("res/wall.wav");
 
 		pong_hit_player = slLoadWAV("res/player.wav");
 		pong_player_scored = slLoadWAV("res/score.wav");
 		pong_match_end = slLoadWAV("res/pong_frank_match_end.wav");
 		pong_select_menu = slLoadWAV("res/pong_frank_select1.wav");
-		pong_select_option1 = slLoadWAV("res/pong_frank_select2.wav");
 		pong_select_option2 = slLoadWAV("res/pong_frank_select3.wav");
 
-		//pong_menu_song = LoadMusicStream("res/menu2.ogg"); //change to wav
+		pong_menu_song = slLoadWAV("res/pong_menu.wav");
 
-		//PlayMusicStream(pong_menu_song);
-		//SetMusicVolume(pong_menu_song, 0.40);
+		slSoundLoop(pong_menu_song);
+#endif
 
-	#endif
-
-
-
-		//SetTargetFPS(60);// Set target frames-per-second
-		//--------------------------------------------------------------------------------------
+		slSetFont(slLoadFont("res/fonts/FORCED_SQUARE.ttf"), 24);
 
 		gamePhase = Menu;
 		InitMenuScreen();
@@ -103,7 +98,6 @@ namespace Juego
 
 	static void Draw()
 	{
-		//BeginDrawing();
 		slSetBackColor(0, 0, 0);
 
 		switch (gamePhase)
@@ -135,7 +129,7 @@ namespace Juego
 				case PlayGame:
 				{
 				#ifdef AUDIO
-					//slSoundStop(pong_menu_song);
+					slSoundStopAll();
 				#endif
 					RestartPhase();
 					gamePhase = Gameplay;
@@ -163,7 +157,7 @@ namespace Juego
 				case QuitGame:
 				{
 				#ifdef AUDIO
-					//slSoundStop(pong_menu_song);
+					slSoundStopAll();
 				#endif
 
 					gamePhase = 0;
@@ -197,7 +191,7 @@ namespace Juego
 				case Menu:
 				{
 				#ifdef AUDIO
-					//slSoundPlay(pong_menu_song);
+					slSoundPlay(pong_menu_song);
 				#endif
 
 					gamePhase = Menu;
