@@ -77,16 +77,22 @@ namespace Juego
 		void playerDraw()
 		{
 			// Draw middle line
+			slSetForeColor(1.0, 1.0, 1.0, 1.0);
 			slRectangleFill(middleLine.rectangle.x, middleLine.rectangle.y, middleLine.rectangle.width, middleLine.rectangle.height);
 
+			slSetForeColor(1.0, 0.25, 0.25, 1);
 			slRectangleFill(players[0].rectangle.x, players[0].rectangle.y, players[0].rectangle.width, players[0].rectangle.height); // red
 
+			slSetForeColor(0.25, 0.25, 1.0, 1);
 			slRectangleFill(players[1].rectangle.x, players[1].rectangle.y, players[1].rectangle.width, players[1].rectangle.height); // skyblue
 
 			if (isPlayer2CPU)
 			{
+				slSetForeColor(1.0, 1.0, 0.25, 1);
 				slRectangleFill(players[1].rectangle.x, players[1].rectangle.y, players[1].rectangle.width, players[1].rectangle.height); //yellow
 			}
+
+			slSetForeColor(1.0, 1.0, 1.0, 1.0);
 		}
 
 		void player1AddScore()
